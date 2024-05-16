@@ -21,19 +21,21 @@ public class HibernateDemoApp {
 		
 		Transaction transaction = session.beginTransaction();
 		
-		Student student = new Student(1002, "Raja", 30000.00);
-		session.persist(student);
+         Student student1 = session.get(Student.class, 1001);
+         Student student2 = session.get(Student.class, 1001);
+         Student student3 = session.get(Student.class, 1001);
+         
+         System.out.println(student1);
+         System.out.println(student2);
+         System.out.println(student3);
 		
-	//	session.merge(student);
 		
+         Session session2 = sessionFactory.openSession();
 		
-//		session.delete(student);
-		
-		
-//		Student student2 =  session.get(Student.class, 1001);
-//		
-//		System.out.println(student2);
-		
+         Student student4 = session2.get(Student.class, 1001);
+         Student student5 = session2.get(Student.class, 1001);
+         System.out.println(student4);
+         System.out.println(student5);
 		
 		transaction.commit();
 		
